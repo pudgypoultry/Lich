@@ -1,15 +1,14 @@
-using Interfaces;
 using UnityEngine;
 
 namespace Card
 {
-    public abstract class Card
+    public abstract class BaseCard
     {
         #region Properties
 
         [Header("Card Fields")]
         // Fields
-        public new string name;
+        public string name;
         public string id;
         public CardRarity rarity;
         public CardType type;
@@ -74,7 +73,7 @@ namespace Card
 
         #region Functions
 
-        public abstract Card MakeCopy();
+        public abstract BaseCard MakeCopy();
         public abstract void Use();
 
         public override string ToString()

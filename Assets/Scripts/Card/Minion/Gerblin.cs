@@ -1,18 +1,10 @@
-﻿using Interfaces;
-using UnityEngine;
-
-namespace Card.Minion
+﻿namespace Card.Minion
 {
-    public class Gerblin : Minion, IDamageable
+    public class Gerblin : BaseCard
     {
-        public Gerblin(string id, string name, string description, CardType type, CardRarity rarity, CardKeyword[] keywords, int attack, int defense) : 
-            base(id, name, description, type, rarity, keywords, attack, defense)
-        {
-            
-        }
-
-
-        public override Card MakeCopy()
+        public static string ID = "Gerblin";
+        
+        public override BaseCard MakeCopy()
         {
             throw new System.NotImplementedException();
         }

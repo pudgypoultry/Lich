@@ -1,10 +1,12 @@
+using Interfaces;
 using UnityEngine;
 
 namespace Card.Minion
 { 
-    public abstract class Minion : Card
+    public abstract class Minion : Card, IDamageable
     {
         [Header("Minion Fields")] 
+        public int health;
         public int attack;
         public int defense;
     
@@ -20,8 +22,17 @@ namespace Card.Minion
             // Static elements
             this.type = CardType.Minion;
         }
-        
-        
+
+
+        public void Damage(int amount)
+        {
+            health -= amount;
+        }
+
+        public void Heal(int amount)
+        {
+            health += amount;
+        }
     }
 }
 

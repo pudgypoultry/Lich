@@ -1,8 +1,9 @@
+using Interfaces;
 using UnityEngine;
 
 namespace Card
 {
-    public abstract class Card : MonoBehaviour
+    public abstract class Card
     {
         #region Properties
 
@@ -10,17 +11,15 @@ namespace Card
         // Fields
         public new string name;
         public string id;
-        
+        public CardRarity rarity;
+        public CardType type;
+        public CardKeyword[] keywords;
         
         // Display stuff
+        [Header("Display Elements")]
         public Sprite cardBackground;
         public Sprite cardImage;
 
-        public CardRarity rarity;
-        public CardType type;
-
-        public CardKeyword[] keywords;
-        
         [TextArea(1,5)]
         public string description;
 
@@ -58,17 +57,30 @@ namespace Card
             Spell
         }
 
+        public enum CardTarget
+        {
+            Self,
+            None,
+            All,
+            Location,
+            AllLocation,
+            Event,
+            AllEvent,
+            SelfAndLocation,
+            SelfAndEvent
+        }
+
         #endregion
 
         #region Functions
 
-        protected Card()
-        {
-            
-        }
-
         public abstract Card MakeCopy();
         public abstract void Use();
+
+        public override string ToString()
+        {
+            return this.name;
+        }
 
         #endregion
 

@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Interfaces;
+using UnityEngine;
 
 namespace Card.Minion
 {
-    public class Gerblin : Minion
+    public class Gerblin : Minion, IDamageable
     {
         public Gerblin(string id, string name, string description, CardType type, CardRarity rarity, CardKeyword[] keywords, int attack, int defense) : 
             base(id, name, description, type, rarity, keywords, attack, defense)

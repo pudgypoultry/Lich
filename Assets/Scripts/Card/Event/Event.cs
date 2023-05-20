@@ -1,6 +1,8 @@
+using Interfaces;
+
 namespace Card.Event
 {
-    public abstract class Event : Card
+    public abstract class Event : Card, IUsable
     {
 
     }

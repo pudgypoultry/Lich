@@ -11,6 +11,7 @@ public class Interactable : MonoBehaviour
     private GameObject currentSlot;
     private Transform originalParent;
     private bool slotted = false;
+    private List<Transform> cardsInSlots = new List<Transform>();
 
     [SerializeField] private float heightOffset = 0;
     [SerializeField] private float dragDelay = 100;
@@ -82,6 +83,7 @@ public class Interactable : MonoBehaviour
                 if (potentialSlot.transform.parent.GetComponent<Interactable>().boxTypes.Contains(boxType))
                 {
                     currentSlot = potentialSlot;
+                    currentSlot.transform.parent.GetComponent<Interactable>().AddCardToSlot(transform);
                     Debug.Log(currentSlot.transform.parent);
                     potentialSlot = null;
                     slotted = true;
@@ -120,6 +122,12 @@ public class Interactable : MonoBehaviour
             // Debug.Log("THIS IS MY HOLE IT WAS MADE FOR ME");
             potentialSlot = null;
         }
+    }
+
+    public void AddCardToSlot(Transform cardToAdd)
+    {
+        cardsInSlots.Add(cardToAdd);
+        Debug.Log(transform.name + " just added " + cardToAdd.name + " to its slot!");
     }
 
 

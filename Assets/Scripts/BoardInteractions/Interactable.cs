@@ -61,7 +61,7 @@ public class Interactable : MonoBehaviour
         // Debug.Log("I am moving from " + transform.position + "to " + targetPosition + "!");
     }
 
-    public void PickUp(Vector3 pos)
+    public virtual void PickUp(Vector3 pos)
     {
         if (slotted)
         {
@@ -136,5 +136,14 @@ public class Interactable : MonoBehaviour
         Debug.Log("Boxes need to have a way to add cards to their slots!");
     }
 
+    public GameObject GetCurrentSlot()
+    {
+        return currentSlot;
+    }
+
+    public List<Transform> GetCardsInSlots()
+    { 
+        return cardsInSlots;
+    }
 
 }

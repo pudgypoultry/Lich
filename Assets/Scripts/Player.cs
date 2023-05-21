@@ -5,46 +5,123 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Deck myDeck;
+
+    // The thing that lets players interact with objects on the board via the mouse
+    public MouseInteractionHandler boardManager;
+
     public bool isDead = false;
+
+    // The 4 slots that a location can be placed into and the locations currently filling those slots
+    public List<InteractableBox> locationSlots;
+    public List<InteractableBox> locations;
+
+    // The 3 slots that a relic can be placed into and the locations currently filling those slots
+    public List<InteractableBox> relicSlots;
+    public List<InteractableBox> relics;
+
+    // Tracks all cards currently in play
+    public List<BaseCard> cardsInPlay = new List<BaseCard>();
+
+    // Tracks all cards that have been discarded from play
+    public List<BaseCard> cardsInGraveyard = new List<BaseCard>();
+
+    // Tracks the immediate-use location
+    public InteractableBox ritualCircle;
+
+    public Vector3 drawPosition = new Vector3(0, 0, 0);
+
+
+    private void Start()
+    {
+        locationSlots = new List<InteractableBox> { null, null, null, null };
+        locations = new List<InteractableBox> { null, null, null, null };
+        relicSlots = new List<InteractableBox> { null, null, null };
+        relics = new List<InteractableBox> { null, null, null };
+    }
+
+
+    public void AddCardToPlay(BaseCard card)
+    {
+        cardsInPlay.Add(card);
+    }
+
+    public void RemoveCardFromPlay(BaseCard card)
+    {
+        cardsInPlay.Remove(card);
+    }
+
+    public void AddRelic(InteractableBox relic)
+    {
+        relics.Add(relic);
+    }
+
+    public void RemoveRelic(InteractableBox relic)
+    {
+        relics.Remove(relic);
+    }
+
+    public void AddLocation(InteractableBox box)
+    {
+        relics.Add(box);
+    }
+
+    public void RemoveLocation(InteractableBox box)
+    {
+        relics.Remove(box);
+    }
+
+    public void AddCardToGraveyard(BaseCard card)
+    { 
+        cardsInGraveyard.Add(card);
+    }
+
+    public void RemoveCardFromGraveyard(BaseCard card)
+    {
+        cardsInGraveyard.Add(card);
+    }
+
+    public void EndTurnProcess()
+    {
+        // Turn off player control
+        boardManager.TakeAwayControl();
+
+        // Check for events via "cardsInPlay" and checking their CardType
+        foreach (BaseCard card in cardsInPlay)
+        {
+            if (card.type == BaseCard.CardType.Event)
+            { 
+                // Run that card's end of turn effect
+            }
+        }
+
+        // Loop through all locationSlots, and if they aren't null, call the box's SlottedCardUse()
+        foreach (InteractableBox box in locations)
+        {
+            if (box != null)
+            {
+                box.SlottedCardUse();
+            }
+        }
+
+        // If no cards in deck, lose
+        if (myDeck.GetSize() == 0)
+        {
+            isDead = true;
+            return;
+        }
+
+        // Draw a card and display it in the middle of the play area
+        BaseCard drawnCard = myDeck.Draw();
+        Instantiate(drawnCard, drawPosition, Quaternion.identity);
+        AddCardToPlay(drawnCard);
+
+
+
+        // Give back control
+        boardManager.GiveControl();
+
+
+    }
 
 }
 
-/*
-public class Deck {
-
-    public List<BaseCard> cards = new List<BaseCard>();
-    
-    public Deck () { 
-
-    }
-
-    public IEnumerable<BaseCard> GetCards() {
-        foreach (BaseCard card in cards) {
-            yield return card;
-        }
-    }
-
-    public int GetSize () {
-        return cards.Count;
-    }
-
-    public BaseCard Draw() {
-        BaseCard tempCard = cards[0];
-        cards.RemoveAt(0);
-        return tempCard;
-    }
-
-    public static void Shuffle(Deck deck) {
-        System.Random random = new System.Random();
-
-        for (int i=0; i<deck.cards.Count; i++) {
-            int j = random.Next(i, deck.cards.Count);
-            BaseCard temporary = deck.cards[i];
-            deck.cards[i] = deck.cards[j];
-            deck.cards[j] = temporary;
-        }
-    }
-
-};
-
-*/

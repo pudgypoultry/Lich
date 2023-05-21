@@ -10,6 +10,7 @@ public class MouseInteractionHandler : MonoBehaviour
     private GameObject current_object;
     private LayerMask ignoreThese;
     private LayerMask dragLayer;
+    private bool canSelect = true;
 
     Interactable current_selected_object;
     [SerializeField] private Camera playerCam;
@@ -25,9 +26,13 @@ public class MouseInteractionHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CastRay();
-        DeselectObject();
-        MoveObject(dragPos);
+        if (canSelect)
+        {
+            CastRay();
+            DeselectObject();
+            MoveObject(dragPos);
+        }
+
     }
 
     public void CastRay()
@@ -80,6 +85,16 @@ public class MouseInteractionHandler : MonoBehaviour
         {
             current_object.GetComponent<Interactable>().ChangeTarget(targetPosition);
         }
+    }
+
+    public void GiveControl()
+    {
+        canSelect = true;
+    }
+
+    public void TakeAwayControl()
+    {
+        canSelect = false;
     }
 
 }

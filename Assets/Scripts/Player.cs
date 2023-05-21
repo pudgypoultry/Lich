@@ -7,10 +7,9 @@ public class Player : MonoBehaviour
     public Deck myDeck;
     public bool isDead = false;
 
-
-
 }
 
+/*
 public class Deck {
 
     public List<BaseCard> cards = new List<BaseCard>();
@@ -47,3 +46,5 @@ public class Deck {
     }
 
 };
+
+*/

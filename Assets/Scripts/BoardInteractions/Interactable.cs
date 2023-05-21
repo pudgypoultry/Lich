@@ -65,8 +65,8 @@ public class Interactable : MonoBehaviour
     {
         if (slotted)
         {
-            Debug.Log(currentSlot);
-            Debug.Log(currentSlot.name);
+            // Debug.Log(currentSlot);
+            // Debug.Log(currentSlot.name);
             currentSlot.transform.parent.GetComponent<InteractableBox>().RemoveCardFromSlot(transform);
             slotted = false;
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractableBox : Interactable
 {
-
+    
     public void SlottedCardUse()
     {
         foreach (Transform card in cardsInSlots)
@@ -16,6 +16,7 @@ public class InteractableBox : Interactable
     public override void AddCardToSlot(Transform cardToAdd)
     {
         cardsInSlots.Add(cardToAdd);
+        
         Debug.Log(transform.name + " just added " + cardToAdd.name + " to its slot!");
     }
 

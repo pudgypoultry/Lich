@@ -32,7 +32,8 @@ public class BaseCard : MonoBehaviour
         Minion,
         Location,
         Event,
-        Spell
+        Spell,
+        Death
     }
 
     public enum CardRarity

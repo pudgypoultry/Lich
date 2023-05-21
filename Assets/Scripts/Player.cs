@@ -85,6 +85,15 @@ public class Player : MonoBehaviour
         // Turn off player control
         boardManager.TakeAwayControl();
 
+        // Check for relic effects that apply at end of turn
+        foreach (InteractableBox relic in relics)
+        {
+            if (relic != null)
+            { 
+                // Run that relic's end turn effect
+            }
+        }
+
         // Check for events via "cardsInPlay" and checking their CardType
         foreach (BaseCard card in cardsInPlay)
         {
@@ -110,14 +119,14 @@ public class Player : MonoBehaviour
             return;
         }
 
-        // Draw a card and display it in the middle of the play area
+        // Draw a card, instantiate it, then place it in the middle of the play area
         BaseCard drawnCard = myDeck.Draw();
         Instantiate(drawnCard, drawPosition, Quaternion.identity);
         AddCardToPlay(drawnCard);
 
 
 
-        // Give back control
+        // Give back control to the player
         boardManager.GiveControl();
 
 

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,19 +7,33 @@ public class BaseCard : MonoBehaviour
 
     [Header("Card Fields")]
     // Fields
-    public string cardName;
-    public string id;
-    public CardRarity rarity;
-    public CardType type;
-    public CardKeyword[] keywords;
-        
+    public string cardName = string.Empty;
+    
+    public string id = string.Empty;
+    
+    public CardRarity rarity = CardRarity.Null;
+    
+    public CardType type = CardType.Null;
+    
+    public List<CardKeyword> keywords = new List<CardKeyword>();
+    
+    public CardDamageType damageType = CardDamageType.Null;
+
+    public List<CardTarget> target = new List<CardTarget>();
+
+    public CardLocationType locationType = CardLocationType.Null;
+    
+    public CardRank rank = CardRank.Null;
+
+    public int attack = -1;
+    
+    public int defense = -1;
+
     // Display stuff
-    [Header("Display Elements")]
-    public Sprite cardBackground;
+    [Header("Display Elements")] public Sprite cardBackground;
     public Sprite cardImage;
 
-    [TextArea(1,5)]
-    public string description;
+    [TextArea(1, 5)] public string description;
 
     #endregion
 
@@ -28,16 +41,18 @@ public class BaseCard : MonoBehaviour
 
     public enum CardType
     {
+        Null,
         Item,
         Minion,
         Location,
         Event,
         Spell,
-        Death
+        Death,
     }
 
     public enum CardRarity
     {
+        Null,
         Common,
         Uncommon,
         Rare,
@@ -46,19 +61,35 @@ public class BaseCard : MonoBehaviour
 
     public enum CardKeyword
     {
-        Tool,
-        Item,
+        Null,
         Death,
-        Minion,
-        Location,
         Event,
+        Goblin,
+        Item,
+        Location,
+        Minion,
+        Summon,
         Quest,
         Raid,
-        Spell
+        Spell,
+        Spirit,
+        Tool,
+    }
+
+    public enum CardLocationType
+    {
+        Null,
+        Hamlet,
+        Village,
+        Town,
+        SmallCity,
+        City,
+        Metropolis
     }
 
     public enum CardTarget
     {
+        Null,
         Self,
         None,
         All,
@@ -70,10 +101,41 @@ public class BaseCard : MonoBehaviour
         SelfAndEvent
     }
 
+    public enum CardDamageType
+    {
+        Null,
+        Physical,
+        Spiritual,
+        Energy,
+        Fire,
+        Ice,
+        Shock,
+        Death,
+    }
+
+    // Consider changing this.
+    public enum CardRank
+    {
+        Null,
+        One,
+        Two,
+        Three,
+        Four,
+        Five,
+        Six,
+        Seven,
+        Eight,
+        Nine,
+    }
+
     #endregion
 
     #region Functions
-
+    
+    /// <summary>
+    /// Makes a game object copy of the current card.
+    /// </summary>
+    /// <returns>Copy of current gameobject</returns>
     public virtual GameObject MakeCopy()
     {
         // We could make this shuffle directly into the deck instead
@@ -81,11 +143,51 @@ public class BaseCard : MonoBehaviour
         return selfCopy;
     }
 
+    /// <summary>
+    /// void Use() -
+    /// Call when using card on ritual circle, Default Use
+    /// </summary>
     public virtual void Use()
     {
         Debug.Log("YOU HAVEN'T MADE A USE FUNCTION FOR " + transform.name);
     }
 
+    /// <summary>
+    /// Called by sacrifice slot on turn end
+    /// </summary>
+    public virtual void UseOnSacrifice()
+    {
+        Debug.Log("YOU HAVEN'T MADE A USE_ON_SACRIFICE FUNCTION FOR " + transform.name);
+    }
+    
+    /// <summary>
+    /// Called by location slot on turn end
+    /// </summary>
+    public virtual void UseOnLocation()
+    {
+        Debug.Log("YOU HAVEN'T MADE A USE_ON_LOCATION FUNCTION FOR " + transform.name);
+    }
+
+    /// <summary>
+    /// Called by Event slot on turn end
+    /// </summary>
+    public virtual void UseOnEvent()
+    {
+        Debug.Log("YOU HAVEN'T MADE A USE_ON_EVENT FUNCTION FOR " + transform.name);
+    }
+
+    /// <summary>
+    /// Called by Quest slot on turn end
+    /// </summary>
+    public virtual void UseOnQuest()
+    {
+        Debug.Log("YOU HAVEN'T MADE A USE_ON_QUEST FUNCTION FOR " + transform.name);
+    }
+
+    /// <summary>
+    /// Returns the name of the current game object as a string
+    /// </summary>
+    /// <returns>GameObject as a string</returns>
     public override string ToString()
     {
         return transform.name;
@@ -102,4 +204,3 @@ public class BaseCard : MonoBehaviour
 
     #endregion
 }
-

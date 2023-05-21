@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    private Vector3 targetPosition;
-    private float originalHeight;
-    private float slottedHeight;
-    private GameObject potentialSlot;
-    private GameObject currentSlot;
-    private Transform originalParent;
-    private bool slotted = false;
-    private List<Transform> cardsInSlots = new List<Transform>();
+    protected Vector3 targetPosition;
+    protected float originalHeight;
+    protected float slottedHeight;
+    protected GameObject potentialSlot;
+    protected GameObject currentSlot;
+    protected Transform originalParent;
+    protected bool slotted = false;
+    protected List<Transform> cardsInSlots = new List<Transform>();
 
-    [SerializeField] private float heightOffset = 0;
-    [SerializeField] private float dragDelay = 100;
-    [SerializeField] private List<string> validBoxes;
-    [SerializeField] private List<string> boxTypes;
+    [SerializeField] protected float heightOffset = 0;
+    [SerializeField] protected float dragDelay = 100;
+    [SerializeField] protected List<string> validBoxes;
+    [SerializeField] protected List<string> boxTypes;
 
     // Start is called before the first frame update
     void Start()
@@ -63,12 +63,19 @@ public class Interactable : MonoBehaviour
 
     public void PickUp(Vector3 pos)
     {
+        if (slotted)
+        {
+            Debug.Log(currentSlot);
+            Debug.Log(currentSlot.name);
+            currentSlot.transform.parent.GetComponent<InteractableBox>().RemoveCardFromSlot(transform);
+            slotted = false;
+        }
+
         currentSlot = null;
-        slotted = false;
         transform.position = new Vector3(transform.position.x, pos.y, transform.position.z);
 
         if (transform.parent != originalParent)
-        { 
+        {
             transform.parent = originalParent; 
         }
     }
@@ -84,7 +91,7 @@ public class Interactable : MonoBehaviour
                 {
                     currentSlot = potentialSlot;
                     currentSlot.transform.parent.GetComponent<Interactable>().AddCardToSlot(transform);
-                    Debug.Log(currentSlot.transform.parent);
+                    // Debug.Log(currentSlot.transform.parent);
                     potentialSlot = null;
                     slotted = true;
                     break;
@@ -107,7 +114,7 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision);
+        // Debug.Log(collision);
         if (collision.gameObject.CompareTag("Slot"))
         {
             // Debug.Log("THIS IS MY HOLE IT WAS MADE FOR ME");
@@ -124,10 +131,9 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public void AddCardToSlot(Transform cardToAdd)
+    public virtual void AddCardToSlot(Transform cardToAdd)
     {
-        cardsInSlots.Add(cardToAdd);
-        Debug.Log(transform.name + " just added " + cardToAdd.name + " to its slot!");
+        Debug.Log("Boxes need to have a way to add cards to their slots!");
     }
 
 

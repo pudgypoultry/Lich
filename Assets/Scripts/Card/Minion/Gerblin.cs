@@ -1,17 +1,19 @@
-﻿namespace Card.Minion
-{
-    public class Gerblin : BaseCard
-    {
-        public static string ID = "Gerblin";
-        
-        public override BaseCard MakeCopy()
-        {
-            throw new System.NotImplementedException();
-        }
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-        public override void Use()
-        {
-            throw new System.NotImplementedException();
-        }
+public class Gerblin : BaseCard
+{
+    public static string ID = "Gerblin";
+
+    private void Start()
+    {
+        
     }
+
+    public override void Use()
+    {
+        Instantiate(gameObject, new Vector3(transform.position.x, transform.position.y, transform.position.z+2), Quaternion.identity);
+    }
+
 }

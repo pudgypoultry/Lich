@@ -16,13 +16,13 @@ public class EternalGrove : BaseCard
 
         this.target = new List<CardTarget>()
         {
-            CardTarget.Location,
+            CardTarget.Sacrifice,
         };
 
         this.keywords = new List<CardKeyword>()
         {
-            CardKeyword.Undead,
-            CardKeyword.Minion
+            CardKeyword.RitualComponent,
+            CardKeyword.Item
         };
     }
 }

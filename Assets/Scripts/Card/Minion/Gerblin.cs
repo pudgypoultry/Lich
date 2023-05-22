@@ -34,4 +34,10 @@ public class Gerblin : BaseCard
     {
         base.UseOnLocation();
     }
+
+    public override void Use()
+    {
+        Debug.Log(this.name + " is using it's ability on sacrifice!");
+        // Destroy(this.gameObject);
+    }
 }

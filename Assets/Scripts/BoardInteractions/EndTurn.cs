@@ -6,25 +6,18 @@ public class EndTurn : MonoBehaviour
 {
 
     [SerializeField] private List<InteractableBox> locations = new List<InteractableBox>();
+    [SerializeField] private Player thePlayer;
 
     void Update()
     {
         TestingButton();
     }
 
-    private void EndTurnProcesses()
-    {
-        foreach (InteractableBox box in locations)
-        {
-            box.SlottedCardUse();
-        }
-    }
-
     private void TestingButton()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            EndTurnProcesses();
+            thePlayer.EndTurnProcess();
         }
     }
 }

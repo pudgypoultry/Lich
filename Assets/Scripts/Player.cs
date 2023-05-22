@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     // Tracks the immediate-use location
     public InteractableBox ritualCircle;
 
-    public Vector3 drawPosition = new Vector3(0, 0, 0);
+    public GameObject drawPosition;
 
 
     private void Start()
@@ -37,6 +37,17 @@ public class Player : MonoBehaviour
         locations = new List<InteractableBox> { null, null, null, null };
         relicSlots = new List<InteractableBox> { null, null, null };
         relics = new List<InteractableBox> { null, null, null };
+
+        // Testing
+
+        BaseCard currentCard = myDeck.Draw();
+        Debug.Log("Current card is: " + currentCard.name);
+        AddCardToPlay(currentCard);
+        Debug.Log("Added " + currentCard.name + " to play!");
+        Instantiate(currentCard, drawPosition.transform.position, Quaternion.identity);
+        Debug.Log("Instantiated " + currentCard.name + " at location " + drawPosition);
+
+
     }
 
 
@@ -121,7 +132,7 @@ public class Player : MonoBehaviour
 
         // Draw a card, instantiate it, then place it in the middle of the play area
         BaseCard drawnCard = myDeck.Draw();
-        Instantiate(drawnCard, drawPosition, Quaternion.identity);
+        Instantiate(drawnCard, drawPosition.transform.position, Quaternion.identity);
         AddCardToPlay(drawnCard);
 
 

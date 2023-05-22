@@ -18,6 +18,13 @@ public class Deck : MonoBehaviour
         return tempCard;
     }
 
+    public BaseCard DrawFromPosition(int pos)
+    {
+        BaseCard tempCard = cards[pos];
+        cards.RemoveAt(pos);
+        return tempCard;
+    }
+
     public void Shuffle(Deck deck)
     {
         System.Random random = new System.Random();
@@ -117,5 +124,7 @@ public class Deck : MonoBehaviour
 
         return probability;
     }
+
+
 
 }

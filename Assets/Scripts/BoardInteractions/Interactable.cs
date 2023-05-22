@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Every Interactable needs to have card data
+// [RequireComponent(typeof(BaseCard))]
+
 public class Interactable : MonoBehaviour
 {
     protected Vector3 targetPosition;
@@ -12,11 +15,23 @@ public class Interactable : MonoBehaviour
     protected Transform originalParent;
     protected bool slotted = false;
     protected List<Transform> cardsInSlots = new List<Transform>();
+    protected BaseCard cardData;
 
-    [SerializeField] protected float heightOffset = 0;
-    [SerializeField] protected float dragDelay = 100;
+
+    [Header("==Card Faces==")]
+    [SerializeField] protected SpriteRenderer frontFace;
+    [SerializeField] protected SpriteRenderer backFace;
+
+    [Header("==Slotting==")]
+    [SerializeField] protected int maxSlots;
     [SerializeField] protected List<string> validBoxes;
     [SerializeField] protected List<string> boxTypes;
+
+    [Header("==Dragging Control==")]
+    [SerializeField] protected float heightOffset = 0;
+    [SerializeField] protected float dragDelay = 100;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +40,7 @@ public class Interactable : MonoBehaviour
         slottedHeight = transform.position.y + heightOffset;
         originalHeight = transform.position.y;
         originalParent = transform.parent;
+        cardData = GetComponent<BaseCard>();
     }
 
     // Update is called once per frame
@@ -82,7 +98,6 @@ public class Interactable : MonoBehaviour
 
     public void SetDown(Vector3 pos)
     {
-        // ADD RULES HERE FOR WHEN WE'RE ALLOWED TO SLOT
         if (potentialSlot != null)
         {
             foreach (string boxType in validBoxes)
@@ -133,7 +148,15 @@ public class Interactable : MonoBehaviour
 
     public virtual void AddCardToSlot(Transform cardToAdd)
     {
-        Debug.Log("Boxes need to have a way to add cards to their slots!");
+        if (cardsInSlots.Count < maxSlots)
+        {
+            cardsInSlots.Add(cardToAdd);
+            Debug.Log(transform.name + " just added " + cardToAdd.name + " to its slot!");
+        }
+        else 
+        {
+            Debug.Log(transform.name + " has no empty slots!");
+        }
     }
 
     public GameObject GetCurrentSlot()
@@ -144,6 +167,29 @@ public class Interactable : MonoBehaviour
     public List<Transform> GetCardsInSlots()
     { 
         return cardsInSlots;
+    }
+
+    public void SlottedCardUse()
+    {
+        foreach (Transform card in cardsInSlots)
+        {
+            card.gameObject.GetComponent<BaseCard>().Use();
+        }
+    }
+
+    /*
+    public override void AddCardToSlot(Transform cardToAdd)
+    {
+        cardsInSlots.Add(cardToAdd);
+
+        Debug.Log(transform.name + " just added " + cardToAdd.name + " to its slot!");
+    }
+    */
+
+    public void RemoveCardFromSlot(Transform cardToRemove)
+    {
+        cardsInSlots.Remove(cardToRemove);
+        Debug.Log(transform.name + " just removed " + cardToRemove.name + " from its slot!");
     }
 
 }

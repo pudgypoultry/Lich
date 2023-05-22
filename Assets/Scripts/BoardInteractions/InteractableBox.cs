@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractableBox : Interactable
 {
-    
+    /*
     public void SlottedCardUse()
     {
         foreach (Transform card in cardsInSlots)
@@ -25,6 +25,6 @@ public class InteractableBox : Interactable
         cardsInSlots.Remove(cardToRemove);
         Debug.Log(transform.name + " just removed " + cardToRemove.name + " from its slot!");
     }
-
+    */
 
 }

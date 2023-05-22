@@ -73,9 +73,12 @@ public class MouseInteractionHandler : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            current_object.GetComponent<Interactable>().SetDown(dragPos);
-            current_object = null;
-            // Debug.Log(current_object.name);
+            if (current_object != null)
+            {
+                current_object.GetComponent<Interactable>().SetDown(dragPos);
+                current_object = null;
+                // Debug.Log(current_object.name);
+            }
         }
     }
 

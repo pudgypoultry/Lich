@@ -6,7 +6,8 @@ public class Beawood : BaseCard
     {
         this.id = "locationBeawood";
         this.cardName = "Beawood";
-        this.description = "He's a good ol' gerbly boi.";
+        this.description = "A small little village on the nations edge. " +
+                           "Small as it may be, it held religious significance in the past.";
         this.locationType = CardLocationType.Village;
         this.rank = CardRank.One;
         this.type = CardType.Location;

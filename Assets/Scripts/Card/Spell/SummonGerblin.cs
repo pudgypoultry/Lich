@@ -30,6 +30,7 @@ public class SummonGerblin : BaseCard
 
     public override void UseOnSacrifice()
     {
+        //_player.myDeck.PutCardAtBottom();
         base.UseOnSacrifice();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ public class BaseCard : MonoBehaviour
 
     [Header("Card Fields")]
     // Fields
+
+    private Player PlayerManager;
+    
     public string cardName = string.Empty;
     
     public string id = string.Empty;
@@ -71,6 +75,7 @@ public class BaseCard : MonoBehaviour
         Summon,
         Quest,
         Raid,
+        RitualComponent,
         Spell,
         Spirit,
         Tool,
@@ -117,6 +122,7 @@ public class BaseCard : MonoBehaviour
     public enum CardRank
     {
         Null,
+        Zero,
         One,
         Two,
         Three,
@@ -131,7 +137,12 @@ public class BaseCard : MonoBehaviour
     #endregion
 
     #region Functions
-    
+
+    private void Start()
+    {
+        PlayerManager = GameObject.FindObjectOfType<Player>();
+    }
+
     /// <summary>
     /// Makes a game object copy of the current card.
     /// </summary>
@@ -150,6 +161,14 @@ public class BaseCard : MonoBehaviour
     public virtual void Use()
     {
         Debug.Log("YOU HAVEN'T MADE A USE FUNCTION FOR " + transform.name);
+    }
+    
+    /// <summary>
+    /// Called when the card is drawn.
+    /// </summary>
+    public virtual void UseOnDraw()
+    {
+        Debug.Log("YOU HAVEN'T MADE A USE_ON_DRAW FUNCTION FOR " + transform.name);
     }
 
     /// <summary>

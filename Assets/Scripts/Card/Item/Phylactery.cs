@@ -8,7 +8,7 @@ public class Phylactery : BaseCard
         this.id = "itemPhylactery";
         this.cardName = "Phylactery";
         this.description = "Finally your goal lies in reach. " +
-                           "Do you have the remaining vitality to see it through?";
+                           "Do you still have the remaining vitality to see it through?";
         this.rank = CardRank.Null;
         this.type = CardType.Item;
         this.cardBackground = null;

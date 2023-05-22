@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
 
     public GameObject drawPosition;
 
+    public List<GameObject> CardReferences;
+
 
     private void Start()
     {
@@ -46,7 +48,6 @@ public class Player : MonoBehaviour
         Debug.Log("Added " + currentCard.name + " to play!");
         Instantiate(currentCard, drawPosition.transform.position, Quaternion.identity);
         Debug.Log("Instantiated " + currentCard.name + " at location " + drawPosition);
-
 
     }
 

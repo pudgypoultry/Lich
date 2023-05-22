@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,22 +18,74 @@ public class UIManager : MonoBehaviour
     // START PUBLIC INTERFACE //
     ////////////////////////////
 
-    public void StartGameplay()
+    public enum MenuState
     {
-        if (currentState is not MenuState.Main) // Can only start from main menu
+        Main,
+        Settings,
+        Pause,
+        Gameplay
+    }
+
+
+    public void ControlMainPanel(bool enabled)
+    {
+        if (enabled)
         {
-            Debug.Log("UIManager.ControlPausePanel: imagine trying to start the game from a non-main menu");
-            return;
+            MainMenuPanel.SetActive(true);
+            currentState = MenuState.Main;
         }
+        else
+        {
+            MainMenuPanel.SetActive(false);
+            lastState = MenuState.Main;
+        }
+    }
 
-        // TODO: Move camera to position
+    public void ControlGameplayPanel(bool enabled)
+    {
+        if (enabled)
+        {
+            // TODO: Move camera to position
 
-        currentState = MenuState.Gameplay;
+            GameplayPanel.SetActive(true);
+            currentState = MenuState.Gameplay;
 
-        MainMenuPanel.SetActive(false);
-        GameplayPanel.SetActive(true);
+            // TODO: Start game logic
+        }
+        else
+        {
+            GameplayPanel.SetActive(false);
+            lastState = MenuState.Gameplay;
+        }
+    }
 
-        // TODO: Start game logic
+    public void ControlPausePanel(bool enabled)
+    {
+        if (enabled)
+        {
+            PausePanel.SetActive(true);
+            currentState = MenuState.Pause;
+        }
+        else
+        {
+            PausePanel.SetActive(false);
+            lastState = MenuState.Pause;
+        }
+    }
+
+    public void ControlSettingsPanel(bool enabled)
+    {
+        if (enabled)
+        {
+            SettingsPanel.SetActive(true);
+            currentState = MenuState.Settings;
+        }
+        else
+        {
+            SettingsPanel.SetActive(false);
+            prefabDictionary[lastState].SetActive(true); // Reopen last panel
+            lastState = MenuState.Settings;
+        }
     }
 
     public void QuitGame()
@@ -43,72 +96,10 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void ControlPausePanel(bool on)
-    {
-        if (on)
-        {
-            if (currentState is not MenuState.Gameplay) // Can only pause from gameplay
-            {
-                Debug.Log("UIManager.ControlPausePanel: WTF! Trying to pause from non-gameplay menu.");
-                return;
-            }
-
-            GameplayPanel.SetActive(false); // TODO: Should we actually close it?
-            PausePanel.SetActive(true);
-            Time.timeScale = 0f;
-
-            currentState = MenuState.Pause;
-        }
-        else
-        {
-            if (currentState is not MenuState.Pause)
-            {
-                Debug.Log("UIManager.ControlPausePanel: bruv trying to unpause when not even paused. smh ");
-                return;
-            }
-
-            PausePanel.SetActive(false);
-            GameplayPanel.SetActive(true); // TODO: related to above TODO
-            Time.timeScale = 1f;
-
-            currentState = MenuState.Gameplay;
-        }
-    }
-
-    public void ControlSettingsPanel(bool on)
-    {
-        if (on)
-        {
-            // Remember where we came from and close it
-            lastState = currentState;
-            currentState = MenuState.Settings;
-
-            prefabDictionary[lastState].SetActive(false);
-
-            SettingsPanel.SetActive(true);
-        }
-        else
-        {
-            SettingsPanel.SetActive(false);
-
-            prefabDictionary[lastState].SetActive(true); // Reopen last panel
-
-            currentState = lastState;
-            lastState = MenuState.Settings;
-        }
-    }
-
     //////////////////////////
     // END PUBLIC INTERFACE //
     //////////////////////////
 
-    private enum MenuState
-    {
-        Main,
-        Settings,
-        Pause,
-        Gameplay
-    }
     private Dictionary<MenuState, GameObject> prefabDictionary = new Dictionary<MenuState, GameObject>();
     private MenuState currentState;
     private MenuState lastState;

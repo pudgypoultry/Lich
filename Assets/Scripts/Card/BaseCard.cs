@@ -9,7 +9,7 @@ public class BaseCard : MonoBehaviour
     [Header("Card Fields")]
     // Fields
 
-    private Player PlayerManager;
+    protected Player PlayerManager;
     
     public string cardName = string.Empty;
     
@@ -99,7 +99,8 @@ public class BaseCard : MonoBehaviour
         Town,
         SmallCity,
         City,
-        Metropolis
+        Metropolis,
+        ReligiousSite
     }
 
     public enum CardTarget
@@ -214,6 +215,14 @@ public class BaseCard : MonoBehaviour
     public virtual void UseOnQuest()
     {
         Debug.Log("YOU HAVEN'T MADE A USE_ON_QUEST FUNCTION FOR " + transform.name);
+    }
+
+    /// <summary>
+    /// Called by locations on turn end.
+    /// </summary>
+    public virtual void OnTurnEnd()
+    {
+        Debug.Log("YOU HAVEN'T MADE A ON_TURN_END FUNCTION FOR " + transform.name);
     }
 
     /// <summary>

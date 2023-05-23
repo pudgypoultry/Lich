@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Interactable))]
+
 public class BaseCard : MonoBehaviour
 {
     #region Properties

@@ -41,14 +41,14 @@ public class Player : MonoBehaviour
         relics = new List<InteractableBox> { null, null, null };
 
         // Testing
-
+        /*
         BaseCard currentCard = myDeck.Draw();
         Debug.Log("Current card is: " + currentCard.name);
         AddCardToPlay(currentCard);
         Debug.Log("Added " + currentCard.name + " to play!");
         Instantiate(currentCard, drawPosition.transform.position, Quaternion.identity);
         Debug.Log("Instantiated " + currentCard.name + " at location " + drawPosition);
-
+        */
     }
 
 

@@ -253,10 +253,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 530078165}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6535612089551586012, guid: 3742d87c801e67d46b5f14951827e818, type: 3}
+  - {fileID: 4520849932092508358, guid: 17c28f6d6170349478407fd528864a49, type: 3}
+  - {fileID: 5269086693283698934, guid: 0f802c2f510b04249badfe71a535d54a, type: 3}
+  - {fileID: 6949533801724588083, guid: a88201dd439d1c5449255c57c70f35bc, type: 3}
+  - {fileID: 3675038347071207742, guid: f98097720e9d3c74bb63e451849fa421, type: 3}
 --- !u!65 &112311907
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -427,7 +428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530078157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.16000009, y: 0.54, z: 1.8240004}
+  m_LocalPosition: {x: -0.16000009, y: 0.54, z: 7.08}
   m_LocalScale: {x: 1.503116, y: 0.14990263, z: 1.0788916}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1303,7 +1304,7 @@ PrefabInstance:
     - target: {fileID: 7068415393538165906, guid: c03ee6777ded0364da9f352f59acd301,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.194
+      value: -2.97
       objectReference: {fileID: 0}
     - target: {fileID: 7068415393538165906, guid: c03ee6777ded0364da9f352f59acd301,
         type: 3}
@@ -1313,7 +1314,7 @@ PrefabInstance:
     - target: {fileID: 7068415393538165906, guid: c03ee6777ded0364da9f352f59acd301,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.36
+      value: 7.03
       objectReference: {fileID: 0}
     - target: {fileID: 7068415393538165906, guid: c03ee6777ded0364da9f352f59acd301,
         type: 3}

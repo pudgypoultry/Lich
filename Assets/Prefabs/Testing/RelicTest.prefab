@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dead Man's Hand
+  m_text: Neow's Lament
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 84d7a2d0217cbce4ea6e85cb76345041, type: 2}
   m_sharedMaterial: {fileID: -7758024032812039082, guid: 84d7a2d0217cbce4ea6e85cb76345041,
@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 7068415393538165904}
   - component: {fileID: 7068415393538165868}
   - component: {fileID: 5752209908072397755}
+  - component: {fileID: 5269086693283698934}
   m_Layer: 0
   m_Name: RelicTest
   m_TagString: Untagged
@@ -321,6 +322,32 @@ MonoBehaviour:
   boxTypes: []
   heightOffset: 0
   dragDelay: 100
+--- !u!114 &5269086693283698934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068415393538165907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb242858c6045318d522d90bd4db163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardName: 
+  id: 
+  rarity: 0
+  type: 0
+  keywords: 
+  damageType: 0
+  target: 
+  locationType: 0
+  rank: 0
+  attack: -1
+  defense: -1
+  cardBackground: {fileID: 0}
+  cardImage: {fileID: 0}
+  description: 
 --- !u!1 &7068415393692319302
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7068415393692319301}
   - component: {fileID: 7068415393692319300}
+  - component: {fileID: 9175974963498991691}
   m_Layer: 0
   m_Name: CardFront
   m_TagString: Untagged
@@ -394,7 +422,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb7eebb6202dfe24fa9017fbcd19e78b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c42f4e42c2fe4840b61fb0ef3b8bcb0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -405,6 +433,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9175974963498991691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068415393692319302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb242858c6045318d522d90bd4db163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardName: 
+  id: 
+  rarity: 0
+  type: 0
+  keywords: 
+  damageType: 0
+  target: 
+  locationType: 0
+  rank: 0
+  attack: -1
+  defense: -1
+  cardBackground: {fileID: 0}
+  cardImage: {fileID: 0}
+  description: 
 --- !u!1 &7068415394304193041
 GameObject:
   m_ObjectHideFlags: 0

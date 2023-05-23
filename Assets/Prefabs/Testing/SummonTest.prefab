@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 7068415393538165904}
   - component: {fileID: 7068415393538165868}
   - component: {fileID: 5752209908072397755}
+  - component: {fileID: 6949533801724588083}
   m_Layer: 0
   m_Name: SummonTest
   m_TagString: Untagged
@@ -321,6 +322,32 @@ MonoBehaviour:
   boxTypes: []
   heightOffset: 0
   dragDelay: 100
+--- !u!114 &6949533801724588083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068415393538165907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22abaf06ed0b486db7bad5b3864b3a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardName: 
+  id: 
+  rarity: 0
+  type: 0
+  keywords: 
+  damageType: 0
+  target: 
+  locationType: 0
+  rank: 0
+  attack: -1
+  defense: -1
+  cardBackground: {fileID: 0}
+  cardImage: {fileID: 0}
+  description: 
 --- !u!1 &7068415393692319302
 GameObject:
   m_ObjectHideFlags: 0

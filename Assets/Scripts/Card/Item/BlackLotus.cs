@@ -14,9 +14,9 @@ public class BlackLotus : BaseCard
         this.attack = -1;
         this.defense = -1;
 
-        this.target = new List<CardTarget>()
+        this.target = new List<CardType>()
         {
-            CardTarget.Sacrifice,
+            CardType.Ritual,
         };
 
         this.keywords = new List<CardKeyword>()

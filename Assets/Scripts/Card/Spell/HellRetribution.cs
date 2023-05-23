@@ -11,9 +11,10 @@ public class HellRetribution : BaseCard
         this.description = "The heaven's have wrath. But the denizens below have a fury unmatched.";
         this.type = CardType.Spell;
 
-        this.target = new List<CardTarget>()
+        this.target = new List<CardType>()
         {
-            CardTarget.Location
+            CardType.Location,
+            CardType.Ritual
         };
         
         this.keywords = new List<CardKeyword>

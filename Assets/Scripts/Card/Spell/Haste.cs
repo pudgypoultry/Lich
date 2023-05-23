@@ -11,9 +11,10 @@ public class Haste : BaseCard
         this.description = "With time so precious, one cannot afford to be idle.";
         this.type = CardType.Spell;
 
-        this.target = new List<CardTarget>()
+        this.target = new List<CardType>()
         {
-            CardTarget.None
+            CardType.Ritual,
+            CardType.Minion
         };
         
         this.keywords = new List<CardKeyword>

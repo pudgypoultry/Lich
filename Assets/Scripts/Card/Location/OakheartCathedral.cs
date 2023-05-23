@@ -16,9 +16,9 @@ public class Beawood : BaseCard
         this.attack = -1; // Set to -1 for now
         this.defense = -1; // set to -1 for now
         
-        this.target = new List<CardTarget>
+        this.target = new List<CardType>
         {
-            CardTarget.None
+            CardType.Null
         };
         
         this.keywords = new List<CardKeyword>()

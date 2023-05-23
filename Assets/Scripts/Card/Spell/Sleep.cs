@@ -11,10 +11,11 @@ public class Sleep : BaseCard
         this.description = "Lul their minds into the plane of dreams, so that you may go about your work in peace.";
         this.type = CardType.Spell;
 
-        this.target = new List<CardTarget>()
+        this.target = new List<CardType>()
         {
-            CardTarget.Location,
-            CardTarget.Event
+            CardType.Location,
+            CardType.Event,
+            CardType.Ritual
         };
         
         this.keywords = new List<CardKeyword>

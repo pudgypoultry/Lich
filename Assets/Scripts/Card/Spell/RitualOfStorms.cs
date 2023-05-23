@@ -12,9 +12,10 @@ public class RitualOfStorms : BaseCard
         this.type = CardType.Spell;
         this.cardImage = null;
 
-        this.target = new List<CardTarget>()
+        this.target = new List<CardType>()
         {
-            CardTarget.Location
+            CardType.Location,
+            CardType.Ritual
         };
 
         this.keywords = new List<CardKeyword>()

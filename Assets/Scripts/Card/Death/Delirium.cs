@@ -14,9 +14,9 @@ public class Delerium : BaseCard
         this.type = CardType.Death;
         this.cardImage = null;
 
-        this.target = new List<CardTarget>()
+        this.target = new List<CardType>()
         {
-            CardTarget.Self
+            CardType.Null
         };
 
         this.keywords = new List<CardKeyword>()

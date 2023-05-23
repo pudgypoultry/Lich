@@ -25,7 +25,7 @@ public class BaseCard : MonoBehaviour
     
     public CardDamageType damageType = CardDamageType.Null;
 
-    public List<CardTarget> target = new List<CardTarget>();
+    public List<CardType> target = new List<CardType>();
 
     public CardLocationType locationType = CardLocationType.Null;
     
@@ -54,6 +54,7 @@ public class BaseCard : MonoBehaviour
         Event,
         Spell,
         Death,
+        Ritual
     }
 
     public enum CardRarity
@@ -158,6 +159,7 @@ public class BaseCard : MonoBehaviour
     {
         PlayerManager = GameObject.FindObjectOfType<Player>();
 
+        /*
         Interactable physicalCardReference = gameObject.GetComponent<Interactable>();
 
         foreach (CardKeyword keyword in keywords)
@@ -169,6 +171,7 @@ public class BaseCard : MonoBehaviour
         {
             physicalCardReference.validBoxes.Add(aspect);
         }
+        */
     }
 
     /// <summary>

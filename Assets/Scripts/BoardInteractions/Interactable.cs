@@ -14,7 +14,8 @@ public class Interactable : MonoBehaviour
     protected GameObject currentSlot;
     protected Transform originalParent;
     protected bool slotted = false;
-    protected List<Transform> cardsInSlots = new List<Transform>();
+    protected Vector3 currentAngle;
+    [SerializeField] protected List<Transform> cardsInSlots = new List<Transform>();
     protected BaseCard cardData;
 
 
@@ -24,11 +25,16 @@ public class Interactable : MonoBehaviour
 
     [Header("==Slotting==")]
     [SerializeField] protected int maxSlots;
-    public List<BaseCard.CardTarget> validBoxes;
+    public List<BaseCard.CardType> validBoxes;
     public List<BaseCard.CardKeyword> boxTypes;
 
     [Header("==Dragging Control==")]
-    [SerializeField] protected float heightOffset = 0;
+    [SerializeField] protected float heightOffset = 1;
+    protected float currentDesiredZRotation = 0;
+    [SerializeField] protected float desiredPickupZRotation = -90;
+
+    // This shouldn't be here, it should be grabbed from the card allowing a slot
+    [SerializeField] protected float slottedZOffset = 1;
     [SerializeField] protected float dragDelay = 100;
 
     
@@ -40,8 +46,9 @@ public class Interactable : MonoBehaviour
         slottedHeight = transform.position.y + heightOffset;
         originalHeight = transform.position.y;
         originalParent = transform.parent;
+        currentAngle = new Vector3(0, 0, 0);
         cardData = GetComponent<BaseCard>();
-        validBoxes = new List<BaseCard.CardTarget>();
+        validBoxes = new List<BaseCard.CardType>();
         boxTypes = new List<BaseCard.CardKeyword>();
     }
 
@@ -54,6 +61,8 @@ public class Interactable : MonoBehaviour
             LerpToTarget();
         }
 
+        currentAngle = new Vector3(0, 0, Mathf.LerpAngle(currentAngle.z, currentDesiredZRotation, Time.deltaTime));
+        transform.eulerAngles = currentAngle;
     }
 
     private void LerpToTarget()
@@ -85,12 +94,16 @@ public class Interactable : MonoBehaviour
         {
             // Debug.Log(currentSlot);
             // Debug.Log(currentSlot.name);
-            currentSlot.transform.parent.GetComponent<InteractableBox>().RemoveCardFromSlot(transform);
+
+            currentSlot.transform.parent.GetComponent<Interactable>().RemoveCardFromSlot(transform);
             slotted = false;
         }
 
         currentSlot = null;
-        transform.position = new Vector3(transform.position.x, pos.y, transform.position.z);
+
+        currentDesiredZRotation = desiredPickupZRotation;
+        // currentAngle = new Vector3(0, 0, desiredPickupZRotation);
+        
 
         if (transform.parent != originalParent)
         {
@@ -102,9 +115,9 @@ public class Interactable : MonoBehaviour
     {
         if (potentialSlot != null)
         {
-            foreach (BaseCard.CardKeyword boxType in validBoxes)
+            foreach (BaseCard.CardType thingICanSlotInto in transform.GetComponent<BaseCard>().target)
             {
-                if (potentialSlot.transform.parent.GetComponent<Interactable>().boxTypes.Contains(boxType))
+                if (potentialSlot.transform.parent.GetComponent<BaseCard>().type == thingICanSlotInto)
                 {
                     currentSlot = potentialSlot;
                     currentSlot.transform.parent.GetComponent<Interactable>().AddCardToSlot(transform);
@@ -115,18 +128,20 @@ public class Interactable : MonoBehaviour
                 }
             }
         }
-        
+
         if (slotted)
         {
-            targetPosition = new Vector3(currentSlot.transform.parent.position.x, slottedHeight, currentSlot.transform.parent.position.z);
+            targetPosition = new Vector3(currentSlot.transform.parent.position.x, slottedHeight, currentSlot.transform.parent.position.z + slottedZOffset);
             transform.position = targetPosition;
             transform.parent = currentSlot.transform;
         }
 
-        else 
+        else
         {
             transform.position = new Vector3(pos.x, originalHeight, pos.z);
         }
+
+        currentDesiredZRotation = 0;
     }
 
     private void OnTriggerEnter(Collider collision)

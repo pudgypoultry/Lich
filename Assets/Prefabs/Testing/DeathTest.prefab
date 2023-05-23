@@ -225,9 +225,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7068415393538165907}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7068415392767932273}
@@ -237,7 +237,7 @@ Transform:
   - {fileID: 4359675033174011537}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7068415393538165904
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edb2b2632844815a1f766e3d36aa60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerManager: {fileID: 0}
   cardName: 
   id: 
   rarity: 0
@@ -341,12 +342,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ddc0a04fc5e7f34d865b1a7f52beec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardsInSlots: []
   frontFace: {fileID: 0}
   backFace: {fileID: 0}
   maxSlots: 0
   validBoxes: 
   boxTypes: 
-  heightOffset: 0
+  heightOffset: 1
   dragDelay: 100
 --- !u!1 &7068415393692319302
 GameObject:
@@ -641,7 +643,6 @@ GameObject:
   - component: {fileID: 4359675033174011537}
   - component: {fileID: 7744732645457096468}
   - component: {fileID: 9008589841316611308}
-  - component: {fileID: 1662901765563200097}
   m_Layer: 0
   m_Name: Cardstock
   m_TagString: Untagged
@@ -714,16 +715,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1662901765563200097
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8255146617813500180}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

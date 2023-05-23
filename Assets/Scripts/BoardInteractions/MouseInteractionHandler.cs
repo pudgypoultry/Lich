@@ -47,8 +47,14 @@ public class MouseInteractionHandler : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100, ~ignoreThese))
         {
             // Debug.Log("Should be not the drag layer: " + hit.transform);
+            // Debug.Log("Parent is: " + hit.transform.parent);
             obj = hit.collider.gameObject;
-            SelectObject(obj);
+
+            if (Input.GetMouseButtonDown(0) && obj.GetComponent<Interactable>() != null)
+            {
+                SelectObject(obj);
+                // Debug.Log(current_object.name);
+            }
         }
 
         // Get position of colission between ray and drag plane, used to "pick up" card
@@ -61,12 +67,8 @@ public class MouseInteractionHandler : MonoBehaviour
 
     private void SelectObject(GameObject objectToSet)
     {
-        if (Input.GetMouseButtonDown(0) && objectToSet.GetComponent<Interactable>() != null)
-        {
-            current_object = objectToSet;
-            current_object.GetComponent<Interactable>().PickUp(dragPos);
-            // Debug.Log(current_object.name);
-        }
+        current_object = objectToSet;
+        current_object.GetComponent<Interactable>().PickUp(dragPos);
     }
 
     private void DeselectObject()

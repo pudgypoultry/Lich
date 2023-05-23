@@ -12,9 +12,9 @@ public class Enhance : BaseCard
         this.type = CardType.Spell;
         this.cardImage = null;
 
-        this.target = new List<CardTarget>()
+        this.target = new List<CardType>()
         {
-            CardTarget.Minion
+            CardType.Minion
         };
 
         this.keywords = new List<CardKeyword>()

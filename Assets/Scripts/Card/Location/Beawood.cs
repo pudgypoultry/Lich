@@ -10,9 +10,9 @@ public class OakheartCathedral : BaseCard
         this.locationType = CardLocationType.ReligiousSite;
         this.type = CardType.Location;
 
-        this.target = new List<CardTarget>
+        this.target = new List<CardType>
         {
-            CardTarget.None
+            CardType.Null
         };
         
         this.keywords = new List<CardKeyword>()

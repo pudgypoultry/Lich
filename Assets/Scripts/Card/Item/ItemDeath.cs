@@ -13,9 +13,9 @@ public class ItemDeath : BaseCard
         this.cardBackground = null;
         this.cardImage = null;
 
-        this.target = new List<CardTarget>()
+        this.target = new List<CardType>()
         {
-            CardTarget.Self
+            CardType.Ritual
         };
 
         this.keywords = new List<CardKeyword>()

@@ -12,9 +12,9 @@ public class SummonFallen : BaseCard
                            "An army, ripe for the harvest.";
         this.type = CardType.Spell;
 
-        this.target = new List<CardTarget>()
+        this.target = new List<CardType>()
         {
-            CardTarget.None
+            CardType.Ritual
         };
         
         this.keywords = new List<CardKeyword>

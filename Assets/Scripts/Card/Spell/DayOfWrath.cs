@@ -11,9 +11,10 @@ public class DayOfWrath : BaseCard
         this.description = "The destruction wrought today will be remembered. Only time will tell how.";
         this.type = CardType.Spell;
 
-        this.target = new List<CardTarget>()
+        this.target = new List<CardType>()
         {
-            CardTarget.AllLocation
+            CardType.Location,
+            CardType.Event
         };
         
         this.keywords = new List<CardKeyword>

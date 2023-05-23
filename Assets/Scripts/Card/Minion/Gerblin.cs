@@ -18,10 +18,11 @@ public class Gerblin : BaseCard
         this.attack = 1;
         this.defense = 1;
 
-        this.target = new List<CardTarget>()
+        this.target = new List<CardType>()
         {
-            CardTarget.Location,
-            CardTarget.Event,
+            CardType.Location,
+            CardType.Event,
+            CardType.Ritual
         };
         
         this.keywords = new List<CardKeyword>()
@@ -30,7 +31,6 @@ public class Gerblin : BaseCard
             CardKeyword.Minion
         };
 
-        base.Start();
     }
 
     public override void UseOnLocation()

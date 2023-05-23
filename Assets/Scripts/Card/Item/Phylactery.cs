@@ -14,9 +14,9 @@ public class Phylactery : BaseCard
         this.cardBackground = null;
         this.cardImage = null;
 
-        this.target = new List<CardTarget>
+        this.target = new List<CardType>
         {
-            CardTarget.None,
+            CardType.Null
         };
 
         this.keywords = new List<CardKeyword>

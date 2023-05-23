@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
     public GameObject drawPosition;
 
-    public List<GameObject> CardReferences;
+    public List<GameObject> cardReferences;
 
 
     private void Start()
@@ -92,10 +92,32 @@ public class Player : MonoBehaviour
         cardsInGraveyard.Add(card);
     }
 
+    public BaseCard GetCardReferenceByID(string desiredCardID)
+    {
+        BaseCard return_card = null;
+
+        foreach (BaseCard card in myDeck.cards)
+        {
+            if (card.id == desiredCardID)
+            {
+                return_card = card;
+            }
+        }
+
+        return return_card;
+    }
+
     public void EndTurnProcess()
     {
         // Turn off player control
         boardManager.TakeAwayControl();
+
+        // If no cards in deck, lose
+        if (myDeck.GetSize() == 0)
+        {
+            isDead = true;
+            return;
+        }
 
         // Check for relic effects that apply at end of turn
         foreach (InteractableBox relic in relics)
@@ -124,12 +146,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        // If no cards in deck, lose
-        if (myDeck.GetSize() == 0)
-        {
-            isDead = true;
-            return;
-        }
+
 
         // Draw a card, instantiate it, then place it in the middle of the play area
         BaseCard drawnCard = myDeck.Draw();

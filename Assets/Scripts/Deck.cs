@@ -125,6 +125,4 @@ public class Deck : MonoBehaviour
         return probability;
     }
 
-
-
 }

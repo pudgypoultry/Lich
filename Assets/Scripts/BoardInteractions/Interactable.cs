@@ -24,8 +24,8 @@ public class Interactable : MonoBehaviour
 
     [Header("==Slotting==")]
     [SerializeField] protected int maxSlots;
-    [SerializeField] protected List<string> validBoxes;
-    [SerializeField] protected List<string> boxTypes;
+    public List<BaseCard.CardTarget> validBoxes;
+    public List<BaseCard.CardKeyword> boxTypes;
 
     [Header("==Dragging Control==")]
     [SerializeField] protected float heightOffset = 0;
@@ -41,6 +41,8 @@ public class Interactable : MonoBehaviour
         originalHeight = transform.position.y;
         originalParent = transform.parent;
         cardData = GetComponent<BaseCard>();
+        validBoxes = new List<BaseCard.CardTarget>();
+        boxTypes = new List<BaseCard.CardKeyword>();
     }
 
     // Update is called once per frame
@@ -100,7 +102,7 @@ public class Interactable : MonoBehaviour
     {
         if (potentialSlot != null)
         {
-            foreach (string boxType in validBoxes)
+            foreach (BaseCard.CardKeyword boxType in validBoxes)
             {
                 if (potentialSlot.transform.parent.GetComponent<Interactable>().boxTypes.Contains(boxType))
                 {

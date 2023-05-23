@@ -7,6 +7,7 @@ public class Gerblin : BaseCard
 {
     private void Awake()
     {
+
         this.id = "minionGerblin";
         this.cardName = "Gerblin";
         this.description = "He's a good ol' gerbly boi.";
@@ -28,6 +29,8 @@ public class Gerblin : BaseCard
             CardKeyword.Goblin,
             CardKeyword.Minion
         };
+
+        base.Start();
     }
 
     public override void UseOnLocation()

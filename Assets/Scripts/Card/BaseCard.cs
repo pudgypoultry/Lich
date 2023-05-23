@@ -11,7 +11,7 @@ public class BaseCard : MonoBehaviour
     [Header("Card Fields")]
     // Fields
 
-    protected Player PlayerManager;
+    [SerializeField] protected Player PlayerManager;
     
     public string cardName = string.Empty;
     
@@ -154,9 +154,21 @@ public class BaseCard : MonoBehaviour
 
     #region Functions
 
-    private void Start()
+    protected virtual void Start()
     {
         PlayerManager = GameObject.FindObjectOfType<Player>();
+
+        Interactable physicalCardReference = gameObject.GetComponent<Interactable>();
+
+        foreach (CardKeyword keyword in keywords)
+        {
+            physicalCardReference.boxTypes.Add(keyword);
+        }
+
+        foreach (CardTarget aspect in target)
+        {
+            physicalCardReference.validBoxes.Add(aspect);
+        }
     }
 
     /// <summary>

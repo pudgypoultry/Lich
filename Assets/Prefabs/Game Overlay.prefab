@@ -2240,6 +2240,7 @@ MonoBehaviour:
   CreditsPanel: {fileID: 6995072950665589559}
   VictoryPanel: {fileID: 375716495182200474}
   GameOverPanel: {fileID: 9189084933000461685}
+  BackgroundPanel: {fileID: 6739979586574314899}
   ToolTipPanel: {fileID: 7814452244173400506}
   DialoguePanel: {fileID: 7447840013164191872}
   initialMenuType: 0

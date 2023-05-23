@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject CreditsPanel;
     [SerializeField] private GameObject VictoryPanel;
     [SerializeField] private GameObject GameOverPanel;
+    [SerializeField] private GameObject BackgroundPanel;
     
     [Header("Gameplay Panel Prefabs")]
     [SerializeField] private GameObject ToolTipPanel;
@@ -21,6 +22,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private MenuState initialMenuType = MenuState.Main;
+    
+    private bool _startedPlaying = false;
 
     ////////////////////////////
     // START PUBLIC INTERFACE //
@@ -42,6 +45,11 @@ public class UIManager : MonoBehaviour
     {
         if (enabled)
         {
+            if (_startedPlaying)
+            {
+                BackgroundPanel.SetActive(true);
+                _startedPlaying = false;
+            }
             MainMenuPanel.SetActive(true);
             currentState = MenuState.Main;
         }
@@ -57,6 +65,11 @@ public class UIManager : MonoBehaviour
         if (enabled)
         {
             // TODO: Move camera to position
+            if (!_startedPlaying)
+            {
+                BackgroundPanel.SetActive(false);
+                _startedPlaying = true;
+            }
 
             GameplayPanel.SetActive(true);
             currentState = MenuState.Gameplay;
@@ -176,9 +189,9 @@ public class UIManager : MonoBehaviour
     public void DisplayTooltip(string message)
     {
         ToolTipPanel.GetComponentInChildren<TextMeshProUGUI>().text = message;
-        // TODO: Remove these? Instead look into responding to user clicking a card or something
-        DialoguePanel.GetComponentInChildren<Image>().CrossFadeAlpha(1.0f, 5f, false);
-        DialoguePanel.GetComponentInChildren<Image>().CrossFadeAlpha(0.0f, 5f, false);
+        // TODO: Remove these? Instead look into responding to user clicking a card or something, May want to switch to a bool so it only happens on hover.
+        //DialoguePanel.GetComponentInChildren<Image>().CrossFadeAlpha(1.0f, 5f, false);
+        //DialoguePanel.GetComponentInChildren<Image>().CrossFadeAlpha(0.0f, 5f, false);
     }
 
     public void QuitGame()

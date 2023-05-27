@@ -356,7 +356,7 @@ PrefabInstance:
     - target: {fileID: 7068415393538165906, guid: 17c28f6d6170349478407fd528864a49,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.746181
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7068415393538165906, guid: 17c28f6d6170349478407fd528864a49,
         type: 3}
@@ -402,6 +402,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BeawoodTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7474962594825442278, guid: 17c28f6d6170349478407fd528864a49,
+        type: 3}
+      propertyPath: slottedZOffset
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17c28f6d6170349478407fd528864a49, type: 3}
@@ -595,6 +600,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f318cafdfa732418e82014b7e06fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalHeight: 0
+  slottedHeight: 0
+  pickupHeight: 0
   cardsInSlots: []
   frontFace: {fileID: 0}
   backFace: {fileID: 0}
@@ -602,6 +610,8 @@ MonoBehaviour:
   validBoxes: 0000000000000000
   boxTypes: 
   heightOffset: 1
+  desiredPickupZRotation: -90
+  slottedZOffset: 1
   dragDelay: 100
 --- !u!114 &530078165
 MonoBehaviour:
@@ -650,7 +660,7 @@ PrefabInstance:
     - target: {fileID: 7068415393538165906, guid: 3742d87c801e67d46b5f14951827e818,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.746181
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7068415393538165906, guid: 3742d87c801e67d46b5f14951827e818,
         type: 3}
@@ -696,6 +706,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GerblinTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947151557572251630, guid: 3742d87c801e67d46b5f14951827e818,
+        type: 3}
+      propertyPath: slottedZOffset
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3742d87c801e67d46b5f14951827e818, type: 3}
@@ -959,6 +974,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 393f9a3008dd9084db0b0d87adcc548c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalHeight: 0
+  slottedHeight: 0
+  pickupHeight: 0
   cardsInSlots: []
   frontFace: {fileID: 0}
   backFace: {fileID: 0}
@@ -966,6 +984,8 @@ MonoBehaviour:
   validBoxes: 
   boxTypes: 00000000
   heightOffset: 1
+  desiredPickupZRotation: -90
+  slottedZOffset: 1
   dragDelay: 100
 --- !u!65 &1226270777
 BoxCollider:
@@ -1335,7 +1355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853294450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.55, y: 0.66, z: -5.12}
+  m_LocalPosition: {x: -1.55, y: 0.4, z: -5.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

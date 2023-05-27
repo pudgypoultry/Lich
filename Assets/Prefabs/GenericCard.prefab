@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 7068415393538165906}
   - component: {fileID: 7068415393538165904}
   - component: {fileID: 7068415393538165868}
-  - component: {fileID: 5752209908072397755}
+  - component: {fileID: 3481496521111448926}
   m_Layer: 0
   m_Name: GenericCard
   m_TagString: Untagged
@@ -302,7 +302,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5752209908072397755
+--- !u!114 &3481496521111448926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,15 +311,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 7068415393538165907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2f318cafdfa732418e82014b7e06fa7, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ddc0a04fc5e7f34d865b1a7f52beec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalHeight: 0.4
+  slottedHeight: 0.6
+  pickupHeight: 1
+  cardsInSlots: []
   frontFace: {fileID: 0}
   backFace: {fileID: 0}
   maxSlots: 0
-  validBoxes: []
-  boxTypes: []
-  heightOffset: 0
+  validBoxes: 
+  boxTypes: 
+  heightOffset: 1
+  desiredPickupZRotation: -90
+  slottedZOffset: 1
   dragDelay: 100
 --- !u!1 &7068415393692319302
 GameObject:

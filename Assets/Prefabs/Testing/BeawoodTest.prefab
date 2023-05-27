@@ -342,6 +342,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ddc0a04fc5e7f34d865b1a7f52beec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalHeight: 0.4
+  slottedHeight: 0.6
+  pickupHeight: 1
   cardsInSlots: []
   frontFace: {fileID: 0}
   backFace: {fileID: 0}
@@ -349,6 +352,8 @@ MonoBehaviour:
   validBoxes: 
   boxTypes: 
   heightOffset: 1
+  desiredPickupZRotation: -90
+  slottedZOffset: 1
   dragDelay: 100
 --- !u!1 &7068415393692319302
 GameObject:

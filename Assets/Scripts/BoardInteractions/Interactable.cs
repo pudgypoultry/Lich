@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Every Interactable needs to have card data
-// [RequireComponent(typeof(BaseCard))]
+// Card trying to slot sometimes finds a NullReferenceException
 
 public class Interactable : MonoBehaviour
 {
     protected Vector3 targetPosition;
-    protected float originalHeight;
-    protected float slottedHeight;
+    protected Vector3 currentAngle;
+
+    [Header("==Positioning==")]
+    [SerializeField] protected float originalHeight;
+    [SerializeField] protected float slottedHeight;
+    [SerializeField] protected float pickupHeight;
+    protected float currentHeight;
+
     protected GameObject potentialSlot;
     protected GameObject currentSlot;
     protected Transform originalParent;
+
     protected bool slotted = false;
-    protected Vector3 currentAngle;
+
+
     [SerializeField] protected List<Transform> cardsInSlots = new List<Transform>();
     protected BaseCard cardData;
 
@@ -44,8 +51,8 @@ public class Interactable : MonoBehaviour
     {
         targetPosition = transform.position;
         slottedHeight = transform.position.y + heightOffset;
-        originalHeight = transform.position.y;
         originalParent = transform.parent;
+        currentHeight = originalHeight;
         currentAngle = new Vector3(0, 0, 0);
         cardData = GetComponent<BaseCard>();
         validBoxes = new List<BaseCard.CardType>();
@@ -79,7 +86,7 @@ public class Interactable : MonoBehaviour
         float x = Mathf.Lerp(transform.position.x, targetPosition.x, dragDelay);
         float z = Mathf.Lerp(transform.position.z, targetPosition.z, dragDelay);
 
-        transform.position = new Vector3(x, transform.position.y, z);
+        transform.position = new Vector3(x, currentHeight, z);
     }
 
     public void ChangeTarget(Vector3 newTarget)
@@ -101,9 +108,10 @@ public class Interactable : MonoBehaviour
 
         currentSlot = null;
 
-        currentDesiredZRotation = desiredPickupZRotation;
+        // currentDesiredZRotation = desiredPickupZRotation;
         // currentAngle = new Vector3(0, 0, desiredPickupZRotation);
-        
+
+        currentHeight = pickupHeight;
 
         if (transform.parent != originalParent)
         {
@@ -138,7 +146,8 @@ public class Interactable : MonoBehaviour
 
         else
         {
-            transform.position = new Vector3(pos.x, originalHeight, pos.z);
+            currentHeight = originalHeight;
+            // transform.position = new Vector3(pos.x, originalHeight, pos.z);
         }
 
         currentDesiredZRotation = 0;

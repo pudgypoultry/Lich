@@ -127,6 +127,7 @@ public class Interactable : MonoBehaviour
             {
                 if (potentialSlot.transform.parent.GetComponent<BaseCard>().type == thingICanSlotInto)
                 {
+                    Debug.Log(potentialSlot + "is where I'm trying to slot into");
                     currentSlot = potentialSlot;
                     currentSlot.transform.parent.GetComponent<Interactable>().AddCardToSlot(transform);
                     // Debug.Log(currentSlot.transform.parent);

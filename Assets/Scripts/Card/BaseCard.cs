@@ -54,7 +54,9 @@ public class BaseCard : MonoBehaviour
         Event,
         Spell,
         Death,
-        Ritual
+        Ritual,
+        SystemLocationSlot,
+        SystemRelicSlot
     }
 
     public enum CardRarity
@@ -92,6 +94,8 @@ public class BaseCard : MonoBehaviour
         Spell,
         Spirit,
         Tool,
+        SystemLocationSlot,
+        SystemRelicSlot
     }
 
     public enum CardLocationType

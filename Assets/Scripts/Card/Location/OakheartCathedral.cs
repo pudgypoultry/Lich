@@ -18,7 +18,7 @@ public class Beawood : BaseCard
         
         this.target = new List<CardType>
         {
-            CardType.Null
+            CardType.SystemLocationSlot
         };
         
         this.keywords = new List<CardKeyword>()

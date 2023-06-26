@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 7068415393538165904}
   - component: {fileID: 7068415393538165868}
   - component: {fileID: 4520849932092508358}
-  - component: {fileID: 7474962594825442278}
+  - component: {fileID: 2701054154298220408}
   m_Layer: 0
   m_Name: BeawoodTest
   m_TagString: Untagged
@@ -330,7 +330,7 @@ MonoBehaviour:
   cardBackground: {fileID: 0}
   cardImage: {fileID: 0}
   description: 
---- !u!114 &7474962594825442278
+--- !u!114 &2701054154298220408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -339,22 +339,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7068415393538165907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ddc0a04fc5e7f34d865b1a7f52beec8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fcb481898591bc48ba0ab0bd981a331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalHeight: 0.4
-  slottedHeight: 0.6
-  pickupHeight: 1
-  cardsInSlots: []
-  frontFace: {fileID: 0}
-  backFace: {fileID: 0}
+  dragDelay: 1
+  pickupHeight: 3
+  originalHeight: 1
+  slottedHeight: 4
+  originalParent: {fileID: 0}
   maxSlots: 1
-  validBoxes: 
-  boxTypes: 
-  heightOffset: 1
-  desiredPickupZRotation: -90
-  slottedZOffset: 1
-  dragDelay: 100
+  slotHeightOffset: 0
+  slotZOffset: 0
+  boxColliders:
+  - {fileID: 7068415392767932272}
 --- !u!1 &7068415393692319302
 GameObject:
   m_ObjectHideFlags: 0

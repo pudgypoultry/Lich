@@ -404,6 +404,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2701054154298220408, guid: 17c28f6d6170349478407fd528864a49,
+        type: 3}
+      propertyPath: slotColliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2701054154298220408, guid: 17c28f6d6170349478407fd528864a49,
+        type: 3}
+      propertyPath: slotColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 1883464326}
     - target: {fileID: 4520849932092508358, guid: 17c28f6d6170349478407fd528864a49,
         type: 3}
       propertyPath: PlayerManager
@@ -756,7 +766,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177860173}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.84, y: 0, z: 0}
+  m_LocalPosition: {x: -0.16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -824,19 +834,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 393f9a3008dd9084db0b0d87adcc548c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragDelay: 100
+  pickupHeight: 0
   originalHeight: 0
   slottedHeight: 0
-  pickupHeight: 0
-  cardsInSlots: []
-  frontFace: {fileID: 0}
-  backFace: {fileID: 0}
-  maxSlots: 0
-  validBoxes: 
-  boxTypes: 00000000
-  heightOffset: 1
-  desiredPickupZRotation: -90
-  slottedZOffset: 1
-  dragDelay: 100
+  originalParent: {fileID: 0}
+  rotationSpeed: 0
 --- !u!65 &1226270777
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -908,7 +911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226270775}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.41, y: 0.19, z: -5.5}
+  m_LocalPosition: {x: 2.44, y: 0.19, z: -6.66}
   m_LocalScale: {x: 2, y: 0.05, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -916,6 +919,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1293389081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7068415393538165907, guid: 3742d87c801e67d46b5f14951827e818,
+    type: 3}
+  m_PrefabInstance: {fileID: 1763892040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1293389087
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293389081}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 1
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1666171497
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,19 +986,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ddc0a04fc5e7f34d865b1a7f52beec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragDelay: 100
+  pickupHeight: 0
   originalHeight: 0
   slottedHeight: 0
-  pickupHeight: 0
-  cardsInSlots: []
-  frontFace: {fileID: 0}
-  backFace: {fileID: 0}
-  maxSlots: 1
-  validBoxes: 
-  boxTypes: 18000000
-  heightOffset: 1
-  desiredPickupZRotation: -90
-  slottedZOffset: 1
-  dragDelay: 100
+  originalParent: {fileID: 0}
+  rotationSpeed: 0
 --- !u!114 &1666171500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1156,10 +1172,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3608734333493420389, guid: 3742d87c801e67d46b5f14951827e818,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535612089551586012, guid: 3742d87c801e67d46b5f14951827e818,
+        type: 3}
+      propertyPath: PlayerManager
+      value: 
+      objectReference: {fileID: 1979919998}
     - target: {fileID: 7068415393538165904, guid: 3742d87c801e67d46b5f14951827e818,
         type: 3}
       propertyPath: m_Size.y
       value: 1.1051407
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068415393538165904, guid: 3742d87c801e67d46b5f14951827e818,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7068415393538165904, guid: 3742d87c801e67d46b5f14951827e818,
         type: 3}
@@ -1225,6 +1256,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GerblinTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947151557572251630, guid: 3742d87c801e67d46b5f14951827e818,
+        type: 3}
+      propertyPath: pickupHeight
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947151557572251630, guid: 3742d87c801e67d46b5f14951827e818,
+        type: 3}
+      propertyPath: slottedZOffset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3742d87c801e67d46b5f14951827e818, type: 3}
@@ -1377,6 +1418,12 @@ Transform:
   m_Father: {fileID: 1979919999}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1883464326 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 7068415392767932272, guid: 17c28f6d6170349478407fd528864a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 524846185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1979919997
 GameObject:
   m_ObjectHideFlags: 0

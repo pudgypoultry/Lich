@@ -7,7 +7,7 @@ public class MouseInteractionHandler : MonoBehaviour
 
     private Vector3 mousePosition;
     private Vector3 dragPos;
-    private GameObject current_object;
+    private Interactable current_object;
     private LayerMask ignoreThese;
     private LayerMask dragLayer;
     private bool canSelect = true;
@@ -52,7 +52,7 @@ public class MouseInteractionHandler : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && obj.GetComponent<Interactable>() != null)
             {
-                SelectObject(obj);
+                SelectObject(obj.GetComponent<Interactable>());
                 // Debug.Log(current_object.name);
             }
         }
@@ -65,10 +65,10 @@ public class MouseInteractionHandler : MonoBehaviour
         }
     }
 
-    private void SelectObject(GameObject objectToSet)
+    private void SelectObject(Interactable objectToSet)
     {
         current_object = objectToSet;
-        current_object.GetComponent<Interactable>().PickUp(dragPos);
+        current_object.PickUp();
     }
 
     private void DeselectObject()
@@ -77,7 +77,7 @@ public class MouseInteractionHandler : MonoBehaviour
         {
             if (current_object != null)
             {
-                current_object.GetComponent<Interactable>().SetDown(dragPos);
+                current_object.SetDown();
                 current_object = null;
                 // Debug.Log(current_object.name);
             }
@@ -88,7 +88,7 @@ public class MouseInteractionHandler : MonoBehaviour
     {
         if (current_object != null)
         {
-            current_object.GetComponent<Interactable>().ChangeTarget(targetPosition);
+            current_object.GetComponent<Interactable>().TargetPosition = targetPosition;
         }
     }
 

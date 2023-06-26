@@ -138,11 +138,11 @@ public class Player : MonoBehaviour
         }
 
         // Loop through all locationSlots, and if they aren't null, call the box's SlottedCardUse()
-        foreach (InteractableBox box in locations)
+        foreach (IBox box in locations)
         {
             if (box != null)
             {
-                box.SlottedCardUse();
+                box.UseCardInSlot();
             }
         }
 

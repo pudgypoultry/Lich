@@ -55,6 +55,15 @@ public class BaseMinion : Interactable, ISlottable, IUsable
         {
             CurrentSlot.EmptySlot(this);
             slotted = false;
+            currentSlot = null;
+            potentialSlot = null;
+            if (!currentlyBeingHeld)
+            {
+                targetPosition = GameObject.FindGameObjectsWithTag("CardReturn")[0].transform.position;
+                desiredZRotation = 0;
+                currentHeight = originalHeight;
+            }
+            
         }
     }
 
@@ -96,6 +105,7 @@ public class BaseMinion : Interactable, ISlottable, IUsable
 
     public override void PickUp()
     {
+        currentlyBeingHeld = true;
         if (slotted)
         {
             // Debug.Log(currentSlot);
@@ -116,6 +126,7 @@ public class BaseMinion : Interactable, ISlottable, IUsable
 
     public override void SetDown()
     {
+        currentlyBeingHeld = false;
         if (potentialSlot != null)
         {
             foreach (BaseCard.CardType thingICanSlotInto in CardTargets())
@@ -198,8 +209,12 @@ public class BaseMinion : Interactable, ISlottable, IUsable
             // Debug.Log("THIS IS MY HOLE IT WAS MADE FOR ME");
             potentialSlot = null;
             potentialSlotCollider = null;
-        }
 
-        desiredZRotation = 0;
+            if (box.CardType() == BaseCard.CardType.Location && !slotted)
+            {
+                desiredZRotation = 0;
+            }
+        }
+        
     }
 }

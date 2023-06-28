@@ -406,6 +406,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2701054154298220408, guid: 17c28f6d6170349478407fd528864a49,
         type: 3}
+      propertyPath: slotHeightOffset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2701054154298220408, guid: 17c28f6d6170349478407fd528864a49,
+        type: 3}
       propertyPath: slotColliders.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -949,9 +954,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1666171498}
   - component: {fileID: 1666171499}
-  - component: {fileID: 1666171500}
   m_Layer: 0
-  m_Name: LocationSlot
+  m_Name: SystemLocationSlot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -983,42 +987,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1666171497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ddc0a04fc5e7f34d865b1a7f52beec8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e1b0a254c47216448be948156dc99ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragDelay: 100
-  pickupHeight: 0
-  originalHeight: 0
-  slottedHeight: 0
-  originalParent: {fileID: 0}
-  rotationSpeed: 0
---- !u!114 &1666171500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666171497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c96014578a77aa48b109e92f9bbabc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerManager: {fileID: 1979919998}
-  cardName: Location1
-  id: 
-  rarity: 0
-  type: 8
-  keywords: 
-  damageType: 0
-  target: 
-  locationType: 0
-  rank: 0
-  attack: -1
-  defense: -1
-  cardBackground: {fileID: 0}
-  cardImage: {fileID: 0}
-  description: 
+  maxSlots: 1
+  slotHeightOffset: 0.5
+  slotZOffset: 0
+  slotColliders:
+  - {fileID: 1177860176}
 --- !u!1 &1671524506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,7 +1374,7 @@ GameObject:
   - component: {fileID: 1853294451}
   m_Layer: 0
   m_Name: DrawPosition
-  m_TagString: Untagged
+  m_TagString: CardReturn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -21,6 +21,7 @@ public class BaseLocation : Interactable, IBox, ISlottable
     protected float slotZOffset;
     protected bool anySlotsFull;
     protected bool allSlotsFull;
+    protected bool shouldBeActive = false;
 
     protected List<ISlottable> cardsInSlots;
     [SerializeField]
@@ -113,6 +114,34 @@ public class BaseLocation : Interactable, IBox, ISlottable
             }
         }
     }
+
+    protected override void Update()
+    {
+        base.Update();
+        if (slotted)
+        {
+            shouldBeActive = true;
+        }
+        else
+        {
+            shouldBeActive = false;
+        }
+        if (shouldBeActive)
+        {
+            for (int i = 0; i < maxSlots; i++)
+            {
+                slotColliders[i].gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < maxSlots; i++)
+            {
+                slotColliders[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
     List<BaseCard.CardType> CardTargets()
     {
         return Card().target;
@@ -145,6 +174,8 @@ public class BaseLocation : Interactable, IBox, ISlottable
                     AllSlotsFull = false;
                 }
             }
+
+            TurnOffCollider(index);
         }
 
         if (index == -1)
@@ -176,6 +207,7 @@ public class BaseLocation : Interactable, IBox, ISlottable
                 AnySlotsFull = true;
             }
         }
+        TurnOnCollider(index);
     }
 
     public virtual void UseCardInSlot()
@@ -195,15 +227,76 @@ public class BaseLocation : Interactable, IBox, ISlottable
         }
     }
 
+    public override void PickUp()
+    {
+        for (int i = 0; i < maxSlots; i++)
+        {
+            if (cardsInSlots[i] != null)
+            {
+                cardsInSlots[i].transform.SetParent(originalParent);
+                cardsInSlots[i].SlotOut();
+                TurnOffCollider(i);
+            }
+        }
+
+        if (slotted)
+        {
+            // Debug.Log(currentSlot);
+            // Debug.Log(currentSlot.name);
+
+            SlotOut();
+        }
+
+        currentSlot = null;
+        currentHeight = pickupHeight;
+
+        if (transform.parent != originalParent)
+        {
+            transform.SetParent(originalParent);
+        }
+
+    }
+
     public override void SetDown()
     {
         currentHeight = originalHeight;
-        desiredZRotation = 0;
+
+        if (potentialSlot != null)
+        {
+            foreach (BaseCard.CardType thingICanSlotInto in CardTargets())
+            {
+                if (potentialSlot.CardType() == thingICanSlotInto)
+                {
+                    Debug.Log(potentialSlot + "is where I'm trying to slot into");
+                    currentSlot = potentialSlot;
+                    SlotIn(potentialSlotCollider, currentSlot);
+                    // currentSlot.FillSlot(potentialSlotCollider, this);
+                    // Debug.Log(currentSlot.transform.parent);
+                    potentialSlot = null;
+                    slotted = true;
+                    break;
+                }
+            }
+        }
+
+        if (slotted)
+        {
+            // targetPosition = new Vector3(currentSlot.transform.position.x, slottedHeight, currentSlot.transform.position.z + currentSlot.SlotZOffset);
+            // transform.position = targetPosition;
+            transform.parent = currentSlot.transform;
+        }
+
+        else
+        {
+            currentHeight = originalHeight;
+            // transform.position = new Vector3(pos.x, originalHeight, pos.z);
+        }
 
         for (int i = 0; i < maxSlots; i++)
         {
             slotPositions[i] = slotColliders[i].transform.position;
         }
+
     }
 
     public virtual void SlotIn(Collider col, IBox theSlot)
@@ -228,6 +321,16 @@ public class BaseLocation : Interactable, IBox, ISlottable
     public virtual void SlottedUse(IBox theSlot)
     {
         Debug.Log("You what the fuck");
+    }
+
+    public void TurnOnCollider(int index)
+    {
+        slotColliders[index].gameObject.SetActive(true);
+    }
+
+    public void TurnOffCollider(int index)
+    {
+        slotColliders[index].gameObject.SetActive(false);
     }
 
     protected void OnTriggerEnter(Collider col)

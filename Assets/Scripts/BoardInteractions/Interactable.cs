@@ -24,7 +24,7 @@ public class Interactable : MonoBehaviour, ICard
     protected float slottedHeight;
     protected float currentHeight;
 
-    protected bool currentlyBeingHeld;
+    protected bool currentlyBeingHeld = false;
 
     // Slot handling
     [SerializeField]

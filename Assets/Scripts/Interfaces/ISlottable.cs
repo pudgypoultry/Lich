@@ -48,4 +48,6 @@ public interface ISlottable
         Debug.Log("You haven't given " + gameObject.name + "a SlottedUse()");
     }
 
+    virtual void Reset() {}
+
 }

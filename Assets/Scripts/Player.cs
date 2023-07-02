@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("===The Deck===")]
     public Deck myDeck;
 
     // The thing that lets players interact with objects on the board via the mouse
+    [Header("===Mouse Interactivity===")]
     public MouseInteractionHandler boardManager;
 
-    public bool isDead = false;
 
+    [Header("===GameBoard Slots===")]
     // The 4 slots that a location can be placed into and the locations currently filling those slots
-    public List<InteractableBox> locationSlots;
-    public List<InteractableBox> locations;
+    public List<GameObject> locationSlots;
+    public List<GameObject> locations;
 
     // The 3 slots that a relic can be placed into and the locations currently filling those slots
-    public List<InteractableBox> relicSlots;
-    public List<InteractableBox> relics;
+    public List<GameObject> relicSlots;
+    public List<GameObject> relics;
 
+    public IBox ritualCircle;
+
+    [Header("===Pieces In Play===")]
     // Tracks all cards currently in play
     public List<BaseCard> cardsInPlay = new List<BaseCard>();
 
@@ -26,19 +31,21 @@ public class Player : MonoBehaviour
     public List<BaseCard> cardsInGraveyard = new List<BaseCard>();
 
     // Tracks the immediate-use location
-    public InteractableBox ritualCircle;
 
+    [Header("===This is where cards end up when kicked out===")]
     public GameObject drawPosition;
 
-    public List<GameObject> cardReferences;
+    private List<GameObject> cardReferences;
+
+    public bool isDead = false;
 
 
     private void Start()
     {
-        locationSlots = new List<InteractableBox> { null, null, null, null };
-        locations = new List<InteractableBox> { null, null, null, null };
-        relicSlots = new List<InteractableBox> { null, null, null };
-        relics = new List<InteractableBox> { null, null, null };
+        locationSlots = new List<GameObject> { null, null, null, null };
+        locations = new List<GameObject> { null, null, null, null };
+        relicSlots = new List<GameObject> { null, null, null };
+        relics = new List<GameObject> { null, null, null };
 
         // Testing
         /*
@@ -62,24 +69,24 @@ public class Player : MonoBehaviour
         cardsInPlay.Remove(card);
     }
 
-    public void AddRelic(InteractableBox relic)
+    public void AddRelic(GameObject relic)
     {
         relics.Add(relic);
     }
 
-    public void RemoveRelic(InteractableBox relic)
+    public void RemoveRelic(GameObject relic)
     {
         relics.Remove(relic);
     }
 
-    public void AddLocation(InteractableBox box)
+    public void AddLocation(GameObject box)
     {
-        relics.Add(box);
+        locations.Add(box);
     }
 
-    public void RemoveLocation(InteractableBox box)
+    public void RemoveLocation(GameObject box)
     {
-        relics.Remove(box);
+        locations.Remove(box);
     }
 
     public void AddCardToGraveyard(BaseCard card)
@@ -109,6 +116,7 @@ public class Player : MonoBehaviour
 
     public void EndTurnProcess()
     {
+        Debug.Log("End of turn process has begun");
         // Turn off player control
         boardManager.TakeAwayControl();
 
@@ -120,11 +128,19 @@ public class Player : MonoBehaviour
         }
 
         // Check for relic effects that apply at end of turn
-        foreach (InteractableBox relic in relics)
+
+        if (relics.Count > 0)
         {
-            if (relic != null)
-            { 
-                // Run that relic's end turn effect
+            foreach (GameObject obj in relics)
+            {
+                if (obj != null)
+                {
+                    IBox box = obj.GetComponent<IBox>();
+                    if (box != null)
+                    {
+                        box.UseCardInSlot();
+                    }
+                }
             }
         }
 
@@ -138,15 +154,20 @@ public class Player : MonoBehaviour
         }
 
         // Loop through all locationSlots, and if they aren't null, call the box's SlottedCardUse()
-        foreach (IBox box in locations)
+        if (locations.Count > 0)
         {
-            if (box != null)
+            foreach (GameObject obj in locations)
             {
-                box.UseCardInSlot();
+                if (obj != null)
+                {
+                    IBox box = obj.GetComponent<IBox>();
+                    if (box != null)
+                    {
+                        box.UseCardInSlot();
+                    }
+                }
             }
         }
-
-
 
         // Draw a card, instantiate it, then place it in the middle of the play area
         BaseCard drawnCard = myDeck.Draw();
@@ -158,7 +179,7 @@ public class Player : MonoBehaviour
         // Give back control to the player
         boardManager.GiveControl();
 
-
+        Debug.Log("End of turn process has concluded");
     }
 
 }

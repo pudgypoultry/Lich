@@ -347,10 +347,13 @@ MonoBehaviour:
   originalHeight: 1
   slottedHeight: 4
   originalParent: {fileID: 0}
+  rotationSpeed: 0
+  frontFace: {fileID: 0}
+  backFace: {fileID: 0}
   maxSlots: 1
   slotHeightOffset: 0
   slotZOffset: 0
-  boxColliders:
+  slotColliders:
   - {fileID: 7068415392767932272}
 --- !u!1 &7068415393692319302
 GameObject:

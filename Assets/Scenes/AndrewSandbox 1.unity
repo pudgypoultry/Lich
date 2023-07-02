@@ -253,10 +253,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1293389088}
+  - {fileID: 812352799}
+  - {fileID: 1293389088}
+  - {fileID: 812352799}
 --- !u!65 &112311907
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ PrefabInstance:
     - target: {fileID: 7068415393538165906, guid: 17c28f6d6170349478407fd528864a49,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.9430685
+      value: 5.85
       objectReference: {fileID: 0}
     - target: {fileID: 7068415393538165906, guid: 17c28f6d6170349478407fd528864a49,
         type: 3}
@@ -511,6 +511,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17c28f6d6170349478407fd528864a49, type: 3}
+--- !u!114 &812352799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4520849932092508358, guid: 17c28f6d6170349478407fd528864a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 524846185}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f26be75a864566ae0a29c1c2b9041f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &947872452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f5e7a5325204a314b98c81b19951ca81,
@@ -944,6 +956,18 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1293389088 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6535612089551586012, guid: 3742d87c801e67d46b5f14951827e818,
+    type: 3}
+  m_PrefabInstance: {fileID: 1763892040}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293389081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9519aec9caf649a08cfcab43b3abc9f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1666171497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1205,7 @@ PrefabInstance:
     - target: {fileID: 7068415393538165906, guid: 3742d87c801e67d46b5f14951827e818,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.419889
+      value: 5.7669315
       objectReference: {fileID: 0}
     - target: {fileID: 7068415393538165906, guid: 3742d87c801e67d46b5f14951827e818,
         type: 3}
@@ -1431,18 +1455,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myDeck: {fileID: 112311906}
   boardManager: {fileID: 1689502367}
-  isDead: 0
-  locationSlots: []
-  locations: []
+  locationSlots:
+  - {fileID: 0}
+  locations:
+  - {fileID: 0}
   relicSlots: []
   relics: []
   cardsInPlay: []
   cardsInGraveyard: []
-  ritualCircle: {fileID: 1226270776}
   drawPosition: {fileID: 1853294450}
-  cardReferences:
-  - {fileID: 0}
-  - {fileID: 0}
+  isDead: 0
 --- !u!4 &1979919999
 Transform:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SysLocationSlot : MonoBehaviour, IBox
 {
+    protected Player gameManager;
+
     [Header("==Box Slot Handling==")]
     // Used for slotting cards into locations
     [SerializeField]
@@ -83,6 +85,7 @@ public class SysLocationSlot : MonoBehaviour, IBox
 
     protected void Start()
     {
+        gameManager = FindObjectOfType<Player>();
         slotPositions = new List<Vector3>();
         cardsInSlots = new List<ISlottable>();
 
@@ -111,6 +114,7 @@ public class SysLocationSlot : MonoBehaviour, IBox
             // Slotted needs to be set to true
             int index = SlotColliders.IndexOf(col);
             CardsInSlots[index] = cardToSlot;
+            gameManager.AddLocation(cardToSlot.gameObject);
             cardToSlot.SlottedParent = transform;
             cardToSlot.Slotted = true;
             cardToSlot.CurrentSlot = this;
@@ -134,6 +138,7 @@ public class SysLocationSlot : MonoBehaviour, IBox
     {
         int index = CardsInSlots.IndexOf(cardToRemove);
         CardsInSlots[index] = null;
+        gameManager.RemoveLocation(cardToRemove.gameObject);
         cardToRemove.SlottedParent = null;
         cardToRemove.Slotted = false;
         cardToRemove.CurrentSlot = null;

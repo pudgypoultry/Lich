@@ -175,6 +175,8 @@ public class BaseLocation : Interactable, IBox, ISlottable
                 }
             }
 
+
+            Debug.Log("Turning off collider: " + index);
             TurnOffCollider(index);
         }
 
@@ -325,12 +327,14 @@ public class BaseLocation : Interactable, IBox, ISlottable
 
     public void TurnOnCollider(int index)
     {
-        slotColliders[index].gameObject.SetActive(true);
+        Debug.Log("Trying to turn on collider");
+        slotColliders[index].enabled = true;
     }
 
     public void TurnOffCollider(int index)
     {
-        slotColliders[index].gameObject.SetActive(false);
+        Debug.Log("Trying to turn off the fucking collider");
+        slotColliders[index].enabled = false;
     }
 
     protected void OnTriggerEnter(Collider col)

@@ -297,6 +297,11 @@ public class BaseLocation : Interactable, IBox, ISlottable
         for (int i = 0; i < maxSlots; i++)
         {
             slotPositions[i] = slotColliders[i].transform.position;
+            if (slotted)
+            {
+                TurnOnCollider(i);
+            }
+
         }
 
     }

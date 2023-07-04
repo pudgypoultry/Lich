@@ -104,7 +104,7 @@ public class SysLocationSlot : MonoBehaviour, IBox
         }
     }
 
-    public Vector3 FillSlot(Collider col, ISlottable cardToSlot)
+    public virtual Vector3 FillSlot(Collider col, ISlottable cardToSlot)
     {
         Debug.Log("Trying to be filled!");
 

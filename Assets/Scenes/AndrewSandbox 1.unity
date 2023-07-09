@@ -395,8 +395,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 18.283876, z: 0.1}
-  m_Center: {x: 0, y: 8.641931, z: 0}
+  m_Size: {x: 0.1, y: 106.59866, z: 0.1}
+  m_Center: {x: 0, y: 52.79934, z: 0}
 --- !u!1001 &524846185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -404,6 +404,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2701054154298220408, guid: 17c28f6d6170349478407fd528864a49,
+        type: 3}
+      propertyPath: backFace
+      value: 
+      objectReference: {fileID: 794211412}
+    - target: {fileID: 2701054154298220408, guid: 17c28f6d6170349478407fd528864a49,
+        type: 3}
+      propertyPath: frontFace
+      value: 
+      objectReference: {fileID: 1993944704}
     - target: {fileID: 2701054154298220408, guid: 17c28f6d6170349478407fd528864a49,
         type: 3}
       propertyPath: slotHeightOffset
@@ -511,6 +521,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17c28f6d6170349478407fd528864a49, type: 3}
+--- !u!212 &794211412 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7068415394304193519, guid: 17c28f6d6170349478407fd528864a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 524846185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &812352799 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4520849932092508358, guid: 17c28f6d6170349478407fd528864a49,
@@ -831,7 +847,7 @@ GameObject:
   - component: {fileID: 1226270779}
   - component: {fileID: 1226270778}
   - component: {fileID: 1226270777}
-  - component: {fileID: 1226270776}
+  - component: {fileID: 1226270781}
   m_Layer: 0
   m_Name: SacrificialAltar
   m_TagString: Untagged
@@ -839,24 +855,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1226270776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226270775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393f9a3008dd9084db0b0d87adcc548c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dragDelay: 100
-  pickupHeight: 0
-  originalHeight: 0
-  slottedHeight: 0
-  originalParent: {fileID: 0}
-  rotationSpeed: 0
 --- !u!65 &1226270777
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -933,9 +931,26 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 331327846}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1689502366}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1226270781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226270775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c37e12b17e1934ebe55356c8e4fcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSlots: 1
+  slotHeightOffset: 0
+  slotZOffset: 0
+  slotColliders:
+  - {fileID: 331327848}
 --- !u!1 &1293389081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7068415393538165907, guid: 3742d87c801e67d46b5f14951827e818,
@@ -1148,6 +1163,7 @@ Transform:
   - {fileID: 1671524507}
   - {fileID: 79453302}
   - {fileID: 1666171498}
+  - {fileID: 1226270780}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1456,11 +1472,13 @@ MonoBehaviour:
   myDeck: {fileID: 112311906}
   boardManager: {fileID: 1689502367}
   locationSlots:
-  - {fileID: 0}
+  - {fileID: 1666171497}
   locations:
   - {fileID: 0}
-  relicSlots: []
-  relics: []
+  relicSlots:
+  - {fileID: 0}
+  relics:
+  - {fileID: 0}
   cardsInPlay: []
   cardsInGraveyard: []
   drawPosition: {fileID: 1853294450}
@@ -1481,6 +1499,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1993944704 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7068415393692319300, guid: 17c28f6d6170349478407fd528864a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 524846185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2066981300
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -70,7 +70,8 @@ public class BaseMinion : Interactable, ISlottable, IUsable
     // Every slottable card needs to be able to be used by its slot
     public virtual void SlottedUse(IBox theSlot)
     {
-        Debug.Log("You haven't given " + gameObject.name + "a SlottedUse()");
+        Debug.Log("If you're seeing this you win");
+        Card().Use();
     }
 
     public virtual void UseOnDraw()

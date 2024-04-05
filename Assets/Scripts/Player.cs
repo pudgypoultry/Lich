@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("===The Deck===")]
     public Deck myDeck;
+    
 
     // The thing that lets players interact with objects on the board via the mouse
     [Header("===Mouse Interactivity===")]
@@ -38,6 +39,8 @@ public class Player : MonoBehaviour
     private List<GameObject> cardReferences;
 
     public bool isDead = false;
+
+    public List<GameObject> allCards = new List<GameObject>();
 
 
     private void Start()

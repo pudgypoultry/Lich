@@ -41,6 +41,7 @@ public class Gerblin : BaseCard
     public override void Use()
     {
         Debug.Log(this.name + " is using it's ability on sacrifice!");
-        // Destroy(this.gameObject);
+        // Need to wait and allow animation to play before destroy once implemented
+        Destroy(this.gameObject);
     }
 }
